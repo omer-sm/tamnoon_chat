@@ -24,3 +24,6 @@ frontend-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Tamnoon output directory
+/tamnoon_out/

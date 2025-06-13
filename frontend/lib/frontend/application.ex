@@ -10,6 +10,12 @@ defmodule Frontend.Application do
     children = [
       # Starts a worker by calling: Frontend.Worker.start_link(arg)
       # {Frontend.Worker, arg}
+      {Tamnoon,
+       [
+         [
+           router: Frontend.Router
+         ]
+       ]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
