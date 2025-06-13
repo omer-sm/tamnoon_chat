@@ -1,4 +1,5 @@
 defmodule Frontend.Methods.Login do
+  alias Frontend.Api
   import Tamnoon.MethodManager
 
   defmethod :try_login do
@@ -7,9 +8,9 @@ defmodule Frontend.Methods.Login do
       password: password
     } = state
 
-    # Here you would typically validate the username and password
-    # For demonstration, we assume any non-empty credentials are valid
-    if username != "" and password != "" do
+    login_result = Api.Users.try_login(username, password)
+
+    if elem(login_result, 0) == :ok do
       diff(
         %{login_modal_class: "modal tmnn-login_modal_class-class", logged_in: true, password: ""},
         state
