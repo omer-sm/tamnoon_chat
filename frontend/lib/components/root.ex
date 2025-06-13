@@ -10,9 +10,13 @@ defmodule Frontend.Components.Root do
       <head>
         <meta name="description" content="Webpage description goes here" />
         <meta charset="utf-8">
-        <title>Tamnoon App</title>
+        <title>Tamnoon Chat</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="ws_connect.js"></script>
+
+        <!-- Include Tailwind CSS and DaisyUI -->
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
       </head>
 
       <body>
