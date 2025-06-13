@@ -1,0 +1,3 @@
+USER: has id, username, password
+ROOM: has id, name
+MESSAGE: has id, room_id, sender, content
