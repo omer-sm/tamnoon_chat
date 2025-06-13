@@ -2,8 +2,7 @@ defmodule Frontend.Api.Users do
   import Frontend.Api.Config
 
   def try_login(username, password) do
-    # :crypto.hash(:sha256, password)
-    password_hash = password
+    password_hash = :crypto.hash(:sha256, password) |> Base.encode64()
 
     case Req.post("#{backend()}/users/login",
            json: %{username: username, password_hash: password_hash}

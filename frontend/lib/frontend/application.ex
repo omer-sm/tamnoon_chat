@@ -18,7 +18,8 @@ defmodule Frontend.Application do
              logged_in: false,
              username: "",
              password: "",
-             login_modal_class: "modal modal-open tmnn-login_modal_class-class"
+             login_modal_class: "modal modal-open tmnn-login_modal_class-class",
+             login_invalid: false
            },
            methods_modules: [
              Frontend.Methods.Login
