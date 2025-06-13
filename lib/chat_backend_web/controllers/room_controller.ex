@@ -44,6 +44,9 @@ defmodule ChatBackendWeb.RoomController do
 
   def messages(conn, %{"id" => id}) do
     messages = Messages.list_messages_by_room(id)
-    render(conn, ChatBackendWeb.MessageJSON, :index, messages: messages)
+
+    conn
+    |> put_view(ChatBackendWeb.MessageJSON)
+    |> render(:index, messages: messages)
   end
 end
