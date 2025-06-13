@@ -101,4 +101,20 @@ defmodule ChatBackend.Messages do
   def change_message(%Message{} = message, attrs \\ %{}) do
     Message.changeset(message, attrs)
   end
+
+  @doc """
+  Returns the list of messages for a given room_id.
+
+  ## Examples
+
+      iex> list_messages_by_room(123)
+      [%Message{}, ...]
+
+  """
+  def list_messages_by_room(room_id) do
+    room_id = if is_binary(room_id), do: String.to_integer(room_id), else: room_id
+    Message
+    |> where([m], m.room_id == ^room_id)
+    |> Repo.all()
+  end
 end

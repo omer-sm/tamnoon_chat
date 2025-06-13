@@ -3,6 +3,7 @@ defmodule ChatBackendWeb.RoomController do
 
   alias ChatBackend.Rooms
   alias ChatBackend.Rooms.Room
+  alias ChatBackend.Messages
 
   action_fallback ChatBackendWeb.FallbackController
 
@@ -39,5 +40,10 @@ defmodule ChatBackendWeb.RoomController do
     with {:ok, %Room{}} <- Rooms.delete_room(room) do
       send_resp(conn, :no_content, "")
     end
+  end
+
+  def messages(conn, %{"id" => id}) do
+    messages = Messages.list_messages_by_room(id)
+    render(conn, ChatBackendWeb.MessageJSON, :index, messages: messages)
   end
 end

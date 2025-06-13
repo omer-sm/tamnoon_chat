@@ -18,7 +18,10 @@ defmodule ChatBackendWeb.MessageJSON do
   defp data(%Message{} = message) do
     %{
       id: message.id,
-      content: message.content
+      content: message.content,
+      user_id: message.user_id,
+      room_id: message.room_id,
+      created_at: message.inserted_at,
     }
   end
 end

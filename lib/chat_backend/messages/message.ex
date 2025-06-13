@@ -13,7 +13,7 @@ defmodule ChatBackend.Messages.Message do
   @doc false
   def changeset(message, attrs) do
     message
-    |> cast(attrs, [:content])
-    |> validate_required([:content])
+    |> cast(attrs, [:content, :user_id, :room_id])
+    |> validate_required([:content, :user_id, :room_id])
   end
 end
