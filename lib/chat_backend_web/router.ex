@@ -8,7 +8,10 @@ defmodule ChatBackendWeb.Router do
   scope "/api", ChatBackendWeb do
     pipe_through :api
 
+    post "/users/login", UserController, :try_login
+
     get "/rooms/:id/messages", RoomController, :messages
+
     resources "/users", UserController, except: [:new, :edit]
     resources "/rooms", RoomController, except: [:new, :edit]
     resources "/messages", MessageController, except: [:new, :edit]

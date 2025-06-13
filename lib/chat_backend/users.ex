@@ -101,4 +101,12 @@ defmodule ChatBackend.Users do
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end
+
+  def try_login_user(username, password_hash) do
+    Repo.exists?(
+      from user in User,
+      where: user.username == ^username
+        and user.password_hash == ^password_hash
+    )
+  end
 end

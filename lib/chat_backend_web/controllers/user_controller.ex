@@ -40,4 +40,16 @@ defmodule ChatBackendWeb.UserController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def try_login(conn, %{"username" => username, "password_hash" => password_hash}) do
+    if (Users.try_login_user(username, password_hash)) do
+      conn
+      |> put_status(:ok)
+      |> json(%{message: "Login successful"})
+    else
+      conn
+      |> put_status(:unauthorized)
+      |> json(%{error: "Invalid username or password"})
+    end
+  end
 end
