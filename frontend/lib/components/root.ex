@@ -5,7 +5,7 @@ defmodule Frontend.Components.Root do
   def heex do
     ~s"""
     <!DOCTYPE html>
-    <html lang="en" data-theme="dark">
+    <html lang="en" data-theme="dark" style="scrollbar-width: none;">
 
       <head>
         <meta name="description" content="Webpage description goes here" />
@@ -21,6 +21,7 @@ defmodule Frontend.Components.Root do
 
       <body class="bg-base-100">
           <%= r.(Frontend.Components.LoginModal) %>
+          <%= r.("chat_page.html.heex") %>
       </body>
     </html>
     """
