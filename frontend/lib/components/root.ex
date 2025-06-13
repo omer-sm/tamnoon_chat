@@ -5,7 +5,7 @@ defmodule Frontend.Components.Root do
   def heex do
     ~s"""
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="en" data-theme="dark">
 
       <head>
         <meta name="description" content="Webpage description goes here" />
@@ -19,7 +19,8 @@ defmodule Frontend.Components.Root do
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
       </head>
 
-      <body>
+      <body class="bg-base-100">
+          <%= r.(Frontend.Components.LoginModal) %>
       </body>
     </html>
     """

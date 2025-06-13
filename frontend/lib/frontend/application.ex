@@ -13,7 +13,13 @@ defmodule Frontend.Application do
       {Tamnoon,
        [
          [
-           router: Frontend.Router
+           router: Frontend.Router,
+           initial_state: %{
+              logged_in: false,
+              username: "",
+              password: ""
+            },
+           debug_mode: true,
          ]
        ]}
     ]
