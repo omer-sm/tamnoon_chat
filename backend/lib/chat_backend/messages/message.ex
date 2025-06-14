@@ -6,6 +6,7 @@ defmodule ChatBackend.Messages.Message do
     field :content, :string
     field :user_id, :id
     field :room_id, :id
+    belongs_to :user, ChatBackend.Users.User, define_field: false
 
     timestamps(type: :utc_datetime)
   end

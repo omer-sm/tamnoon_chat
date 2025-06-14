@@ -113,8 +113,12 @@ defmodule ChatBackend.Messages do
   """
   def list_messages_by_room(room_id) do
     room_id = if is_binary(room_id), do: String.to_integer(room_id), else: room_id
-    Message
-    |> where([m], m.room_id == ^room_id)
+
+    from(m in Message,
+      where: m.room_id == ^room_id,
+      join: u in assoc(m, :user),
+      preload: [user: u]
+    )
     |> Repo.all()
   end
 end

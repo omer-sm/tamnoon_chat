@@ -22,6 +22,7 @@ defmodule ChatBackendWeb.MessageJSON do
       user_id: message.user_id,
       room_id: message.room_id,
       created_at: message.inserted_at,
+      sender_name: (message.user && message.user.username)
     }
   end
 end
