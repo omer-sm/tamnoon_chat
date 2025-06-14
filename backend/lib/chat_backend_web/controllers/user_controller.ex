@@ -42,10 +42,12 @@ defmodule ChatBackendWeb.UserController do
   end
 
   def try_login(conn, %{"username" => username, "password_hash" => password_hash}) do
-    if (Users.try_login_user(username, password_hash)) do
+    user = Users.get_user_by_login(username, password_hash)
+
+    if (!is_nil(user)) do
       conn
       |> put_status(:ok)
-      |> json(%{message: "Login successful"})
+      |> json(Map.take(user, [:id, :username]))
     else
       conn
       |> put_status(:unauthorized)
