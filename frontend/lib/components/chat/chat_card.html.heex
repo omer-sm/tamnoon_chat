@@ -4,7 +4,13 @@
     <div class="card-body flex flex-row p-1" style="height: 80vh;">
       <div class="overflow-y-auto">@raw-rooms_html</div>
       <div class="divider divider-horizontal mx-0"></div>
-      <div>@raw-messages_html</div>
+      <div class="grow flex flex-col my-2 pe-2 justify-between">
+        <div>@raw-messages_html</div>
+        <div class="join w-full mt-2">
+          <input type="text" class="input input-bordered w-1/1 join-item" placeholder="Type your message here..." />
+          <button class="btn btn-primary join-item">></button>
+        </div>
+      </div>
     </div>
   </div>
 
