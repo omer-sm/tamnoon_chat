@@ -26,7 +26,9 @@ defmodule Frontend.Application do
                rooms_html:
                  Frontend.Methods.Rooms.tmnn_get_rooms(%{}, %{})
                  |> elem(1)
-                 |> Map.get(:rooms_html)
+                 |> Map.get(:rooms_html),
+               messages: [],
+               messages_html: "",
              }
            end,
            methods_modules: [

@@ -24,11 +24,33 @@ defmodule Frontend.Methods.Rooms do
 
     case Api.Rooms.get_room(target_room_id) do
       {:ok, %{"data" => room}} ->
+        trigger_method(:get_room_messages, %{"val" => room["id"]})
+
         diffs = %{
           current_room_id: room["id"],
           current_room_name: room["name"]
         }
+
         diff(diffs, state)
+
+      {:error, reason} ->
+        diff(%{error: reason}, state)
+    end
+  end
+
+  defmethod :get_room_messages do
+    room_id = req["val"]
+
+    case Api.Rooms.get_room_messages(room_id) do
+      {:ok, messages} ->
+        messages_html =
+          Tamnoon.Compiler.render_component(
+            Frontend.Components.Chat.MessageList,
+            %{messages: messages["data"]},
+            true
+          )
+
+        diff(%{messages_html: messages_html}, state)
 
       {:error, reason} ->
         diff(%{error: reason}, state)
