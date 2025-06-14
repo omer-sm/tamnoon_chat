@@ -17,6 +17,7 @@ defmodule Frontend.Application do
            initial_state: fn ->
              %{
                logged_in: true,
+               user_id: 1,
                username: "",
                password: "",
                login_modal_class: "modal tmnn-login_modal_class-class",

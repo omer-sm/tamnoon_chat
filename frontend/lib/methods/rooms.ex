@@ -46,7 +46,7 @@ defmodule Frontend.Methods.Rooms do
         messages_html =
           Tamnoon.Compiler.render_component(
             Frontend.Components.Chat.MessageList,
-            %{messages: messages["data"]},
+            %{messages: messages["data"], user_id: state[:user_id]},
             true
           )
 
