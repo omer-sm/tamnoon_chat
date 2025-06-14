@@ -11,6 +11,8 @@ defmodule Frontend.Methods.Login do
     login_result = Api.Users.try_login(username, password)
 
     if elem(login_result, 0) == :ok do
+      trigger_method(:get_rooms, %{})
+
       diff(
         %{login_modal_class: "modal tmnn-login_modal_class-class", logged_in: true, password: ""},
         state

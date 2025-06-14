@@ -14,18 +14,24 @@ defmodule Frontend.Application do
        [
          [
            router: Frontend.Router,
-           initial_state: %{
-             logged_in: true,
-             username: "",
-             password: "",
-             login_modal_class: "modal tmnn-login_modal_class-class",
-             login_invalid: false,
-             current_room_id: nil,
-             current_room_name: nil,
-             rooms: [],
-           },
+           initial_state: fn ->
+             %{
+               logged_in: true,
+               username: "",
+               password: "",
+               login_modal_class: "modal tmnn-login_modal_class-class",
+               login_invalid: false,
+               current_room_id: 1,
+               current_room_name: "Room 1",
+               rooms_html:
+                 Frontend.Methods.Rooms.tmnn_get_rooms(%{}, %{})
+                 |> elem(1)
+                 |> Map.get(:rooms_html)
+             }
+           end,
            methods_modules: [
-             Frontend.Methods.Login
+             Frontend.Methods.Login,
+             Frontend.Methods.Rooms
            ],
            debug_mode: true
          ]
