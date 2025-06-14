@@ -18,4 +18,20 @@ defmodule Frontend.Methods.Rooms do
         diff(%{rooms_html: "", error: reason}, state)
     end
   end
+
+  defmethod :switch_room do
+    target_room_id = req["val"]
+
+    case Api.Rooms.get_room(target_room_id) do
+      {:ok, %{"data" => room}} ->
+        diffs = %{
+          current_room_id: room["id"],
+          current_room_name: room["name"]
+        }
+        diff(diffs, state)
+
+      {:error, reason} ->
+        diff(%{error: reason}, state)
+    end
+  end
 end

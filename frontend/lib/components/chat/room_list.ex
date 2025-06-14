@@ -18,7 +18,7 @@ defmodule Frontend.Components.Chat.RoomList do
   def menu_item(%{"id" => id, "name" => name}) do
     ~s"""
     <li>
-      <a class="menu-item" onclick=@update-current_room value=#{id}>#{name}</a>
+      <button class="menu-item" onclick=@switch_room value=#{id}>#{name}</button>
     </li>
     """
   end
