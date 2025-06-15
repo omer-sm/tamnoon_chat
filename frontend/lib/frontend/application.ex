@@ -30,11 +30,13 @@ defmodule Frontend.Application do
                  |> Map.get(:rooms_html),
                messages: [],
                messages_html: "",
+               current_message: ""
              }
            end,
            methods_modules: [
              Frontend.Methods.Login,
-             Frontend.Methods.Rooms
+             Frontend.Methods.Rooms,
+             Frontend.Methods.Messages
            ],
            debug_mode: true
          ]

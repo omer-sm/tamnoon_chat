@@ -28,7 +28,8 @@ defmodule Frontend.Methods.Rooms do
 
         diffs = %{
           current_room_id: room["id"],
-          current_room_name: room["name"]
+          current_room_name: room["name"],
+          current_message: "",
         }
 
         diff(diffs, state)
@@ -50,7 +51,7 @@ defmodule Frontend.Methods.Rooms do
             true
           )
 
-        diff(%{messages_html: messages_html}, state)
+        diff(%{messages_html: messages_html, messages: messages["data"]}, state)
 
       {:error, reason} ->
         diff(%{error: reason}, state)

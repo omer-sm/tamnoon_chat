@@ -5,10 +5,16 @@
       <div class="overflow-y-auto">@raw-rooms_html</div>
       <div class="divider divider-horizontal mx-0"></div>
       <div class="grow flex flex-col my-2 pe-2 justify-between">
-        <div>@raw-messages_html</div>
+        <div style="height: calc(80vh - 72px);">@raw-messages_html</div>
         <div class="join w-full mt-2">
-          <input type="text" class="input input-bordered w-1/1 join-item" placeholder="Type your message here..." />
-          <button class="btn btn-primary join-item">></button>
+          <input 
+            value=@current_message
+            onchange=@update-current_message
+            type="text" 
+            class="input input-bordered w-1/1 join-item" 
+            placeholder="Type your message here..."
+          />
+          <button class="btn btn-primary join-item" onclick=@send_message>></button>
         </div>
       </div>
     </div>

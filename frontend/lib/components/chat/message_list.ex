@@ -22,10 +22,11 @@ defmodule Frontend.Components.Chat.MessageList do
   def message_item(message_data, user_id) do
     {:ok, message_time, _} = DateTime.from_iso8601(message_data["created_at"])
     now = DateTime.now!("Etc/UTC")
+
     is_today =
       message_time.year == now.year and
-      message_time.month == now.month and
-      message_time.day == now.day
+        message_time.month == now.month and
+        message_time.day == now.day
 
     message_time_formatted =
       if is_today do
