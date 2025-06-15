@@ -13,6 +13,8 @@ defmodule ChatBackendWeb.MessageController do
 
   def create(conn, %{"message" => message_params}) do
     with {:ok, %Message{} = message} <- Messages.create_message(message_params) do
+      message = ChatBackend.Repo.preload(message, :user)
+
       conn
       |> put_status(:created)
       |> put_resp_header("location", ~p"/api/messages/#{message}")
@@ -29,6 +31,7 @@ defmodule ChatBackendWeb.MessageController do
     message = Messages.get_message!(id)
 
     with {:ok, %Message{} = message} <- Messages.update_message(message, message_params) do
+      message = ChatBackend.Repo.preload(message, :user)
       render(conn, :show, message: message)
     end
   end
