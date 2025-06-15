@@ -12,7 +12,7 @@ defmodule Frontend.Components.Root do
         <meta charset="utf-8">
         <title>Tamnoon Chat</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="ws_connect.js"></script>
+        <script src="tamnoon_driver.js"></script>
 
         <!-- Include Tailwind CSS and DaisyUI -->
         <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
