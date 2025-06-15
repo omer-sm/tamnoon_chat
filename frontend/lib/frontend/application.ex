@@ -38,7 +38,7 @@ defmodule Frontend.Application do
              Frontend.Methods.Rooms,
              Frontend.Methods.Messages
            ],
-           debug_mode: true
+           debug_mode: false
          ]
        ]}
     ]
