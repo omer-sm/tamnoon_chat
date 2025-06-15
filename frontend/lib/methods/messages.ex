@@ -17,17 +17,8 @@ defmodule Frontend.Methods.Messages do
 
     case Api.Messages.send_message(message_data) do
       {:ok, response} ->
-        # new_messages = state[:messages] ++ [response["data"]]
-
-        # messages_html =
-        #   Tamnoon.Compiler.render_component(
-        #     Frontend.Components.Chat.MessageList,
-        #     %{messages: new_messages, user_id: state[:user_id]},
-        #     true
-        #   )
-
         trigger_method(:pub, %{
-          "channel" => "clients",
+          "channel" => "room_#{current_room_id}",
           "action" => %{
             "method" => "add_message",
             "message" => response["data"]

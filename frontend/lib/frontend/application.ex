@@ -16,11 +16,11 @@ defmodule Frontend.Application do
            router: Frontend.Router,
            initial_state: fn ->
              %{
-               logged_in: true,
-               user_id: 1,
+               logged_in: false,
+               user_id: nil,
                username: "",
                password: "",
-               login_modal_class: "modal tmnn-login_modal_class-class",
+               login_modal_class: "modal modal-open tmnn-login_modal_class-class",
                login_invalid: false,
                current_room_id: 1,
                current_room_name: "Room 1",
