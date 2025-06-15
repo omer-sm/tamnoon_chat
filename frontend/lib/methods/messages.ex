@@ -33,7 +33,6 @@ defmodule Frontend.Methods.Messages do
   end
 
   defmethod :add_message do
-    IO.inspect(req)
     new_messages = state[:messages] ++ [req["message"]]
 
     messages_html =

@@ -20,11 +20,11 @@ defmodule Frontend.Methods.Rooms do
   end
 
   defmethod :switch_room do
-    target_room_id = req["val"]
+    target_room_id = req["value"]
 
     case Api.Rooms.get_room(target_room_id) do
       {:ok, %{"data" => room}} ->
-        trigger_method(:get_room_messages, %{"val" => room["id"]})
+        trigger_method(:get_room_messages, %{"value" => room["id"]})
 
         trigger_method(:unsub, %{"key" => "room ##{state[:current_room_id]}"})
         trigger_method(:sub, %{"key" => "room_#{room["id"]}"})
@@ -43,7 +43,7 @@ defmodule Frontend.Methods.Rooms do
   end
 
   defmethod :get_room_messages do
-    room_id = req["val"]
+    room_id = req["value"]
 
     case Api.Rooms.get_room_messages(room_id) do
       {:ok, messages} ->
