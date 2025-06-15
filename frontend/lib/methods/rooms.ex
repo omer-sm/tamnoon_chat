@@ -26,8 +26,8 @@ defmodule Frontend.Methods.Rooms do
       {:ok, %{"data" => room}} ->
         trigger_method(:get_room_messages, %{"value" => room["id"]})
 
-        trigger_method(:unsub, %{"key" => "room ##{state[:current_room_id]}"})
-        trigger_method(:sub, %{"key" => "room_#{room["id"]}"})
+        trigger_method(:unsub, %{"channel" => "room ##{state[:current_room_id]}"})
+        trigger_method(:sub, %{"channel" => "room_#{room["id"]}"})
 
         diffs = %{
           current_room_id: room["id"],
