@@ -1,10 +1,14 @@
 <div class="card card-border card-xl shadow-sm bg-base-100 w-2/3 mx-auto my-4" style="max-height: 89vh;">
   <div hidden=@not-logged_in hidden>
-    <h2 class="card-title bg-base-300 p-4" style="border-radius: var(--radius-box) var(--radius-box) 0 0;">@current_room_name</h2>
+    <h2 
+      class="card-title bg-base-300 p-4"
+      style="border-radius: var(--radius-box) var(--radius-box) 0 0;"
+    >@current_room_name</h2>
     <div class="card-body flex flex-row p-1" style="height: 80vh;">
       <div class="overflow-y-auto">@raw-rooms_html</div>
       <div class="divider divider-horizontal mx-0"></div>
-      <div class="grow flex flex-col my-2 pe-2 justify-between">
+
+      <div class="grow flex flex-col my-2 pe-2 justify-between" hidden=@not-current_room_id>
         <div style="height: calc(80vh - 72px);">@raw-messages_html</div>
         <div class="join w-full mt-2">
           <input 
@@ -17,6 +21,14 @@
           <button class="btn btn-primary join-item" onclick=@send_message>></button>
         </div>
       </div>
+
+      <div class="grow flex flex-col my-2 pe-2 justify-between" hidden=@current_room_id>
+        <div class="card-body flex flex-col items-center justify-center h-full">
+          <h2 class="text-2xl font-bold">Welcome to Tamnoon Chat!</h2>
+          <p class="mt-4">Please select a room to start chatting.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 

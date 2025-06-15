@@ -22,8 +22,8 @@ defmodule Frontend.Application do
                password: "",
                login_modal_class: "modal modal-open tmnn-login_modal_class-class",
                login_invalid: false,
-               current_room_id: 1,
-               current_room_name: "Room 1",
+               current_room_id: nil,
+               current_room_name: "Choose Room",
                rooms_html:
                  Frontend.Methods.Rooms.tmnn_get_rooms(%{}, %{})
                  |> elem(1)
