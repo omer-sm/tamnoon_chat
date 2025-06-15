@@ -16,7 +16,7 @@ defmodule Frontend.Methods.Login do
 
       diff(
         %{
-          login_modal_class: "modal tmnn-login_modal_class-class",
+          login_modal_class: "modal",
           logged_in: true,
           password: "",
           username: user_data["username"],

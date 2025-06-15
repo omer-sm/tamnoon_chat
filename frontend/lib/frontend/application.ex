@@ -20,7 +20,7 @@ defmodule Frontend.Application do
                user_id: nil,
                username: "",
                password: "",
-               login_modal_class: "modal modal-open tmnn-login_modal_class-class",
+               login_modal_class: "modal modal-open",
                login_invalid: false,
                current_room_id: nil,
                current_room_name: "Choose Room",
